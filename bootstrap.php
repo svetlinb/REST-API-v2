@@ -1,8 +1,9 @@
 <?php
 /*
  * Autoloader
- * There is no need of our implementation 'cos built in function "spl_autoload_register"
- * will do it for us.
+ * When you create a subfolder structure matching the
+ * namespaces of the containing classes, you will never even have to define an autoloader.
+ * http://php.net/manual/en/function.spl-autoload-register.php#92514
  */
 spl_autoload_extensions(".php");
 spl_autoload_register();
