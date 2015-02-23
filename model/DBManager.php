@@ -1,6 +1,15 @@
 <?php
+/*
+ * DBManager class care for the database connection.
+ * It's intentionally not used Singelton pattern, because it is considered
+ * as a bad practice. Related info about this matter can be found here:
+ * http://stackoverflow.com/questions/8776788/best-practice-on-php-singleton-classes
+ */
+
 namespace model;
+
 use \PDO;
+
 class DBManager {
 	protected $instances;
     protected $params;

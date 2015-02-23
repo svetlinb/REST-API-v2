@@ -7,6 +7,8 @@ class Validator {
 
     /*
      * Sanitize user input
+     *
+     * @Return Mixed: Array or String
      */
     public function sanitizeInput($params){
         $this->params = is_array($params) ? filter_var_array($params, FILTER_SANITIZE_STRING)
@@ -18,6 +20,8 @@ class Validator {
 
     /*
      * Check argument range
+     *
+     * @Return Boolean
      */
     public function validateHttpMethod($httpMethod) {
         $validMethods = array("get", "post", "put", "delete");

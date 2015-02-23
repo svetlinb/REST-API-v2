@@ -1,12 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: svetlin.betsinski
- * Date: 20.2.2015 г.
- * Time: 15:53 ч.
- */
-
 namespace model;
+
 use \PDO;
 
 class Http {
@@ -76,6 +70,9 @@ class Http {
         return !empty($row);
     }
 
+    /*
+     * Set routes which will be handled by our Rest server
+     */
     public function setRoutes() {
         $this->get('jobs/list', function ($id) {
             $query = 'SELECT * FROM jobs ORDER BY id ASC';
@@ -157,6 +154,10 @@ class Http {
             $stmt->execute(array(":id"=>$id));
             $row = $stmt->fetch();
 
+            if(!$row) {
+                throw new \Exception("Not Found", 404);
+            }
+
             $this->response->sendHeader($row, 200);
         });
 
@@ -170,6 +171,9 @@ class Http {
             $stmt->execute(array(":id"=>$id));
             $row = $stmt->fetch();
 
+            if(!$row) {
+                throw new \Exception("Not Found", 404);
+            }
             $this->response->sendHeader($row, 200);
         });
     }

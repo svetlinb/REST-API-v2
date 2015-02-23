@@ -14,8 +14,7 @@ class Router {
     private $http;
 
 	/*
-	 * Send needed headers.
-	 * Init variables and validate user input.
+	 * Prepare needed classes
 	 */
 	public function __construct($config){
         $this->dbResource = new DBManager($config);
@@ -39,7 +38,5 @@ class Router {
         $this->responseHandler->sendHeader($e->getMessage(), $e->getCode());
 	  }
 	}
-
-
 }
 ?>
