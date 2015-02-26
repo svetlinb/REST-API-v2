@@ -28,4 +28,22 @@ class Validator {
 
         return in_array($httpMethod, $validMethods);
     }
+
+    /*
+     * Check is record exist in DB
+     *
+     * @Return Boolean
+     */
+    public function isIdExist($id, $dbh, $model) {
+        if(!is_numeric($id)){
+            return false;
+        }
+
+        $stmt = $dbh->prepare("SELECT * FROM $model WHERE id=:id ");
+        $stmt->setFetchMode(\PDO::FETCH_ASSOC);
+        $stmt->execute(array(":id"=>$id));
+        $row = $stmt->fetch();
+
+        return !empty($row);
+    }
 } 

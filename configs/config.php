@@ -10,13 +10,31 @@ namespace configs;
 
 class Config {
 
-    public static function dbConfig() {
+    public function getConfig() {
       return  $config = array(
             'db' => array(
                 'dsn' => 'localhost',
                 'dbName' => 'rest-api',
                 'dbUser' => 'root',
                 'dbPass' => ''
+            ),
+            'routes' => array(
+                'get' => array(
+                    'jobs/([0-9]+)',
+                    'jobs/show',
+                    'candidates/show',
+                    'candidates/review/([0-9]+)',
+                    'candidates/search/([0-9]+)'
+                ),
+                'put' => array(
+                    'jobs/([0-9]+)'
+                ),
+                'post' => array(
+                    'jobs/([0-9]+)'
+                ),
+                'delete' => array(
+                    'jobs/([0-9]+)'
+                )
             )
         );
     }
